@@ -22,7 +22,7 @@ const App = () => {
 
   // useEffect(() => {
   //   console.log("화면 로딩 완료");  // useEffect는 마지막에 실행된다.
-  // }, [count])
+  // }, [count])5
   // console.log("테스트1");
 
   // const randomNum = useMemo(() => Math.random(), [count]);

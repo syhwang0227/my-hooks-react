@@ -1,30 +1,33 @@
 import React, { useState } from "react";
+import Child1 from "./components/Child1";
+import Child2 from "./components/Child2";
 
 const App = () => {
-    // useState
-    // useEffect
-    // useMemo
-    // useRef
+    const [todoList, setTodoList] = useState([]);
 
-    const [list, setList] = useState([0, 0, 0]);
-
-    const changeList = (index) => {
-        const tempList = [...list];
-        tempList[index] = tempList[index] + 1;
-        setList(tempList);
+    const addTodo = (todo) => {
+        const tempTodoList = [...todoList];
+        tempTodoList.push(todo);
+        setTodoList(tempTodoList);
+        // setCount((prev) => prev + 1);
     };
 
+    const deleteTodo = (index) => {
+        const tempTodoList = [...todoList];
+        tempTodoList.splice(index, 1);
+        setTodoList(tempTodoList)
+    };
 
     return (
         <div>
-            <div>{list[0]}</div>
-            <div>{list[1]}</div>
-            <div>{list[2]}</div>
-            <button onClick={() => changeList(0)}>0번 변경</button>
-            <button onClick={() => changeList(1)}>1번 변경</button>
-            <button onClick={() => changeList(2)}>2번 변경</button>
+            <h1>부모</h1>
+            {/* <button onClick={() => setCount((prev) => prev + 1)}>증가</button> */}
+            <hr />
+            <Child1 setData={addTodo} />
+            <Child2 data={todoList} deleteData={deleteTodo}/>
+            {/* <button onClick={onReset}>삭제</button> */}
         </div>
-    )
-}
+    );
+};
 
 export default App;
