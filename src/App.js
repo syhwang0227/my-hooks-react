@@ -23,7 +23,7 @@ const App = () => {
             <h1>부모</h1>
             {/* <button onClick={() => setCount((prev) => prev + 1)}>증가</button> */}
             <hr />
-            <Child1 setData={addTodo} />
+            <Child1 data={todoList} setData={addTodo} />
             <Child2 data={todoList} deleteData={deleteTodo}/>
             {/* <button onClick={onReset}>삭제</button> */}
         </div>

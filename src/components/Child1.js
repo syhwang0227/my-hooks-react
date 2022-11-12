@@ -1,51 +1,90 @@
+// import React, { useRef } from 'react'
+// import { Button, Form, InputGroup } from 'react-bootstrap';
+
+// const Child1 = ({ data, setData}) => {
+//   const todoRef = useRef();
+
+//   const insertTodo = () => {
+//     const value = todoRef.current.value;
+//     if (value == "") {
+//       alert("할 일을 입력해주세요.");
+//       return;
+//     };
+
+//     if (data.includes(value)) {
+//       alert("이미 등록한 할 일 입니다.");
+//       todoRef.current.value = "";
+//       todoRef.current.focus();
+//       return;
+//     };
+
+//     setData(value);
+//     todoRef.current.value = "";
+//     todoRef.curent.focus();
+//   };
+
+//   const keyInsert = (event) => {
+//     // console.log(event)
+//     if (event.keyCode === 13) {
+//       insertTodo();
+//     };
+//   };
+
+//   return (
+//     <div>
+//       <h1>자식1</h1>
+//       <InputGroup className="mb-3" style={{ width: "300px" }}>
+//         <Form.Control
+//         ref={todoRef}
+//         laceholder="할 일을 입력하세요."
+//         aria-label="Recipient's username"
+//         aria-describedby="basic-addon2"
+//         onKeyUp={keyInsert}
+//         />
+//         <Button
+//         variant="outline-secondary"
+//         id="button-addon2"
+//         onClick={insertTodo}
+//         >
+//           Button
+//         </Button>
+//       </InputGroup>
+//     </div>  
+//   );
+// };
+
+// export default Child1
+
 import React, { useRef } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 
-// props = { data };
 const Child1 = ({ data, setData }) => {
   const todoRef = useRef();
 
   const insertTodo = () => {
-    // if(todoRef.current.value == "") {
-    //     alert("할 일을 입력해주세요.");
-    //     return;
-    // }
     const value = todoRef.current.value;
     if (value == "") {
-        alert("할 일을 입력해주세요.");
-        return;
+      alert("할일을 입력해주세요.");
+      return;
     }
 
     if (data.includes(value)) {
-        alert("이미 등록한 할 일 입니다.");
-        todoRef.current.value = "";
-        todoRef.current.focus();
-        return;
-    };
+      alert("이미 등록한 할일입니다.");
+      todoRef.current.value = "";
+      todoRef.current.focus();
+      return;
+    }
 
     setData(value);
     todoRef.current.value = "";
     todoRef.current.focus();
-    
-    };
+  };
 
-  // 엔터로 값 등록
-//   const onKeyPress = (e) => {
-//     console.log(e.keyCode);
-//     if (e.keyCode === 13) {
-//         // e.preventDefault();
-//         insertTodo();
-        
-//     }
-//   };
-
-    const keyInsert = (event) => {
-        console.log(event)
-        if (event.keyCode === 13) {
-            insertTodo();
-        }
-    
-    };
+  const keyInsert = (event) => {
+    if (event.keyCode === 13) {
+      insertTodo();
+    }
+  };
 
   return (
     <div>
@@ -53,38 +92,20 @@ const Child1 = ({ data, setData }) => {
       <InputGroup className="mb-3" style={{ width: "300px" }}>
         <Form.Control
           ref={todoRef}
-          placeholder="할 일을 입력하세요."
+          placeholder="할일을 입력하세요."
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
-          // 엔터로 값 등록
-        //   onKeyUp={onKeyPress}
-        onKeyUp={keyInsert}
-
+          onKeyUp={keyInsert}
         />
-        {/* <Button variant="outline-secondary" id="button-addon2" onClick={insertTodo}> */}
-        {/* <input value=''  /> */}
         <Button
           variant="outline-secondary"
           id="button-addon2"
-          // 엔터로 값 등록
           onClick={insertTodo}
-
         >
           Button
         </Button>
       </InputGroup>
-      {/* <button onClick={setData}>증가</button> */}
     </div>
   );
 };
-
-// const Child1 = (props, setData) => {
-//   return (
-//     <div>
-//         <h1>자식1</h1>
-//         <div>{props.data}</div>
-//     </div>
-//   )
-// }
-
 export default Child1;
